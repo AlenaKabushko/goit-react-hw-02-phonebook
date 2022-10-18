@@ -1,14 +1,17 @@
 import { Component } from 'react';
+import { nanoid } from 'nanoid';
+//model.id = nanoid();
 
 export class Form extends Component {
   state = {
+    id: '',
     name: '',
     number: '',
   };
 
   inputChange = e => {
     const { name, value } = e.currentTarget;
-    this.setState({ [name]: value });
+    this.setState({ id: nanoid(4), [name]: value });
   };
 
   formSubmit = e => {
@@ -19,7 +22,7 @@ export class Form extends Component {
   };
 
   formReset = () => {
-    this.setState({ name: '', number: '' });
+    this.setState({ id: '', name: '', number: '' });
   };
 
   render() {
