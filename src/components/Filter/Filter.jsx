@@ -1,13 +1,15 @@
+import { Label, Input } from './Filter.styled';
+
 function Filter(props) {
   return (
-    <label>
-      Find contacts by name
-      <input
+    <Label>
+      Find contacts by name:
+      <Input
         type="text"
         name="name"
         onChange={e => props.onChange(e.currentTarget.value)}
       />
-    </label>
+    </Label>
   );
 }
 

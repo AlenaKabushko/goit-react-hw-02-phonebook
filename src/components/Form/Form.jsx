@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
-//model.id = nanoid();
+import { FormStyle, LabelStyle, InputStyle, ButtonStyle } from './Form.styled';
 
 export class Form extends Component {
   state = {
@@ -16,7 +16,6 @@ export class Form extends Component {
 
   formSubmit = e => {
     e.preventDefault();
-    console.log(this.state);
     this.props.formData(this.state);
     this.formReset();
   };
@@ -28,10 +27,10 @@ export class Form extends Component {
   render() {
     return (
       <>
-        <form onSubmit={this.formSubmit}>
-          <label>
-            Name{' '}
-            <input
+        <FormStyle onSubmit={this.formSubmit}>
+          <LabelStyle>
+            Name
+            <InputStyle
               type="text"
               value={this.state.name}
               name="name"
@@ -40,10 +39,10 @@ export class Form extends Component {
               onChange={this.inputChange}
               required
             />
-          </label>
-          <label>
+          </LabelStyle>
+          <LabelStyle>
             Number
-            <input
+            <InputStyle
               type="tel"
               name="number"
               value={this.state.number}
@@ -52,9 +51,9 @@ export class Form extends Component {
               onChange={this.inputChange}
               required
             />
-          </label>
-          <button type="submit">Add contact</button>
-        </form>
+          </LabelStyle>
+          <ButtonStyle type="submit">Add contact</ButtonStyle>
+        </FormStyle>
       </>
     );
   }

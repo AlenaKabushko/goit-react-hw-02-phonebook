@@ -1,19 +1,25 @@
+import {
+  ContactsListStyled,
+  ContactsItemStyled,
+  ButtonStyle,
+  TextStyle,
+} from './Contacts.styled';
+
 function ContactList(props) {
-  console.log(props);
   return (
     <div>
-      <ul>
+      <ContactsListStyled>
         {props.allContacts.map(obj => (
-          <li key={obj.id}>
-            <p>
+          <ContactsItemStyled key={obj.id}>
+            <TextStyle>
               {obj.name}: {obj.number}
-            </p>
-            <button type="button" onClick={() => props.onDelete(obj.id)}>
+            </TextStyle>
+            <ButtonStyle type="button" onClick={() => props.onDelete(obj.id)}>
               Delete
-            </button>
-          </li>
+            </ButtonStyle>
+          </ContactsItemStyled>
         ))}
-      </ul>
+      </ContactsListStyled>
     </div>
   );
 }

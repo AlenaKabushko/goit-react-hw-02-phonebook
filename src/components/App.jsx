@@ -41,11 +41,13 @@ export class App extends Component {
       });
     }
     return (
-      <>
+      <section style={{ marginLeft: '40px' }}>
+        <h1>Phonebook</h1>
         <Form formData={this.formData} />
+        <h2>Contacts</h2>
         <Filter onChange={this.onFilterChange} />
         <ContactList allContacts={fromFilter} onDelete={this.deleteContacts} />
-      </>
+      </section>
     );
   }
 }
