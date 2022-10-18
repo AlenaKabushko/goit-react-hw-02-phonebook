@@ -17,10 +17,12 @@ export class App extends Component {
   formData = data => {
     if (this.state.contacts.find(contact => contact.name === data.name)) {
       alert(`${data.name} is already in contacts`);
+      return false;
     }
     this.setState(prevState => ({
       contacts: [data, ...prevState.contacts],
     }));
+    return true;
   };
 
   deleteContacts = id => {

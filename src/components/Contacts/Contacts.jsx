@@ -4,6 +4,7 @@ import {
   ButtonStyle,
   TextStyle,
 } from './Contacts.styled';
+import PropTypes from 'prop-types';
 
 function ContactList(props) {
   return (
@@ -25,3 +26,8 @@ function ContactList(props) {
 }
 
 export default ContactList;
+
+ContactList.propTypes = {
+  allContacts: PropTypes.arrayOf(PropTypes.shape),
+  onDelete: PropTypes.func,
+};

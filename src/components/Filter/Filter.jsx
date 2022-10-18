@@ -1,4 +1,5 @@
 import { Label, Input } from './Filter.styled';
+import PropTypes from 'prop-types';
 
 function Filter(props) {
   return (
@@ -14,3 +15,7 @@ function Filter(props) {
 }
 
 export default Filter;
+
+Filter.propTypes = {
+  onChange: PropTypes.func,
+};

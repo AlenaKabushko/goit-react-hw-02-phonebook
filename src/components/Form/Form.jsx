@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
 import { FormStyle, LabelStyle, InputStyle, ButtonStyle } from './Form.styled';
+import PropTypes from 'prop-types';
 
 export class Form extends Component {
   state = {
@@ -58,3 +59,7 @@ export class Form extends Component {
     );
   }
 }
+
+Form.propTypes = {
+  formData: PropTypes.func.isRequired,
+};
