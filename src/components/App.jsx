@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import ContactList from './Contacts/Contacts';
 import { Form } from './Form/Form';
+import Filter from './Filter/Filter';
 
 export class App extends Component {
   state = {
@@ -14,7 +15,9 @@ export class App extends Component {
   };
 
   formData = data => {
-    console.log(data);
+    if (this.state.contacts.find(contact => contact.name === data.name)) {
+      alert(`${data.name} is already in contacts`);
+    }
     this.setState(prevState => ({
       contacts: [data, ...prevState.contacts],
     }));
@@ -26,14 +29,22 @@ export class App extends Component {
     }));
   };
 
+  onFilterChange = value => {
+    this.setState({ filter: value });
+  };
+
   render() {
+    let fromFilter = this.state.contacts;
+    if (this.state.filter) {
+      fromFilter = this.state.contacts.filter(({ name }) => {
+        return name.toLowerCase().includes(this.state.filter.toLowerCase());
+      });
+    }
     return (
       <>
         <Form formData={this.formData} />
-        <ContactList
-          allContacts={this.state.contacts}
-          onDelete={this.deleteContacts}
-        />
+        <Filter onChange={this.onFilterChange} />
+        <ContactList allContacts={fromFilter} onDelete={this.deleteContacts} />
       </>
     );
   }
